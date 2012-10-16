@@ -1,0 +1,216 @@
+pulseaudio-settings (0.9.19-11+0m6) unstable; urgency=low
+
+  * This entry has been added by BIFH queue processor
+    version has been changed to 0.9.19-11+0m6
+
+ -- Litkey Krisztian <krisztian.litkey@nokia.com>  Tue, 28 Sep 2010 11:44:54 +0300
+
+pulseaudio-settings (0.9.19-11) unstable; urgency=low
+
+  * Create mixer configuration that completely replaces alsaped.conf.
+  * Implemented: SWP#MMFRA-1275
+  * Fixed: NB#186656 - Ringing tone is not routed to wired headset.
+  * Add new tuning values and volume steps for hp call mode.
+
+ -- Maemo Multimedia <multimedia@maemo.org>  Tue, 21 Sep 2010 16:52:34 +0300
+
+pulseaudio-settings (0.9.19-10) UNRELEASED; urgency=low
+
+  * pre-start: Make sure that the card names use the n950 prefix even if the
+    names change in the kernel.
+  * Fixes: NB#188212 - Configure the names for the sound cards
+  * Introduced new pulseaudio-settings-debug package.
+
+ -- Maemo Multimedia <multimedia@maemo.org>  Thu, 16 Sep 2010 09:51:45 +0300
+
+pulseaudio-settings (0.9.19-9) unstable; urgency=low
+
+  * Changed alsa hardware numbers to hardware names.
+  * Fixes: NB#170003 - [BT_Audio] Ringing tone not routed to BT-headset 
+  * Updated BT volume setting on combine module.
+  * Added downmixing to algorithms and appropriate modes
+  * pre-start: Configure all McBSPs to use the threshold dma mode.
+  * Fixes: NB#185131 - All McBSP ports need to be in threshold mode volume
+  * Fixes: NB#186909 - Hardware volume key is supporting 18 step
+    control for Music Player application.
+
+ -- Maemo Multimedia <multimedia@maemo.org>  Tue, 31 Aug 2010 17:09:00 +0300
+
+pulseaudio-settings (0.9.19-8) unstable; urgency=low
+
+  * Use "lineout" steps for "eci" and "hs" modes. Fixes: NB#175061
+  * pulseaudio_pre-start.sh: Enable threshold mode for McBSP2. Fixes: NB#179747
+
+ -- Maemo Multimedia <multimedia@maemo.org>  Tue, 20 Jul 2010 10:35:41 +0300
+
+pulseaudio-settings (0.9.19-7) unstable; urgency=low
+
+  * Add initial tunings for hp mode, aep and eq
+  * system.pa: Increase number of fragments for SCO-ALSA from 2 to 4 
+  * Fixes: NB#173719 - [BT_Audio] Audio is not routed to bluetooth headset 
+    during phone call
+
+ -- Maemo Multimedia <multimedia@maemo.org>  Tue, 22 Jun 2010 09:40:32 +0300
+
+pulseaudio-settings (0.9.19-6) unstable; urgency=low
+
+  * Reset ALSA DMA buffer configurations
+
+ -- Maemo Multimedia <multimedia@maemo.org>  Tue, 01 Jun 2010 15:07:10 +0300
+
+pulseaudio-settings (0.9.19-5) unstable; urgency=low
+
+  * Configure "TPA6140A2 Headphone" also in the headset-call path.
+  * Fixes: NB#168942 - Headphone volume is too low.
+
+ -- Maemo Multimedia <multimedia@maemo.org>  Fri, 14 May 2010 15:30:13 +0300
+
+pulseaudio-settings (0.9.19-4) unstable; urgency=low
+
+  * Fixes: NB#166559 - The default volume level (30419) sounds louder than
+    after you set volume to the same level.
+  * Fixes: NB#161850 - Audio not routed to BH703 in N950 S0.7
+  * Load mainvolume module after parameters module
+  * Set alsa sco card to 2 in system.pa
+  * Decrease the ear reference loop length by 1666 ms
+  * RMC settings added to eci mode
+  * Dual microphone settings added
+  * Add configuration for the "TPA6140A2 Headphone" mixer element.
+
+ -- Maemo Multimedia <multimedia@maemo.org>  Mon, 10 May 2010 13:50:15 +0300
+
+pulseaudio-settings (0.9.19-3) unstable; urgency=low
+
+  * Fixes: NB#166301 - pulseaudio-settings-n950 package can't be installed/updated
+  * Applied volume limit to headphone also in active call state.
+
+ -- Maemo Multimedia <multimedia@maemo.org>  Wed, 28 Apr 2010 13:44:05 +0300
+
+pulseaudio-settings (0.9.19-1) unstable; urgency=low
+
+  * Initial configuration for pulseaudio-ng and n950.
+  * Configure pulseaudio ports.
+  * Enable module-dbus-protocol.
+  * Cmtspeech separation changes.
+  * Load meego modules
+  * Force cmt_speech module loading.
+  * Add dependencies to packages that are required by configuration.
+  * Implemented: SWP#MMFRA-1179
+
+ -- Maemo Multimedia <multimedia@maemo.org>  Tue, 20 Apr 2010 19:22:29 +0200
+
+pulseaudio-settings (0.9.15-14) unstable; urgency=low
+
+  * n950: Removed upstart-dev dependency, ALSA and haptics workarounds.
+  * rx51: Disabled from package creation.
+
+ -- Maemo Multimedia <multimedia@maemo.org>  Wed, 13 Jan 2010 09:52:29 +0200
+
+pulseaudio-settings (0.9.15-13) unstable; urgency=low
+
+  * Applied mixer related patches from NB#148275 for n950.
+  * Removed workaround to activate haptic feedback on R&D images.
+
+ -- Maemo Multimedia <multimedia@maemo.org>  Thu, 03 Dec 2009 09:30:51 +0200
+
+pulseaudio-settings (0.9.15-12) unstable; urgency=low
+
+  * Further fixes to x-maemo.alsa_sink.mixer_control in hp.parameters (n950).
+
+ -- Maemo Multimedia <multimedia@maemo.org>  Wed, 04 Nov 2009 14:17:50 +0200
+
+pulseaudio-settings (0.9.15-11) unstable; urgency=low
+
+  * Set DAC2 Digital Fine level to 60 in hp.parameters for n950.
+  * Helps: NB#143838 - After the call is connected, audio has not been
+    heard in the Device earpiece by default.
+
+ -- Maemo Multimedia <multimedia@maemo.org>  Mon, 02 Nov 2009 16:28:39 +0200
+
+pulseaudio-settings (0.9.15-10) unstable; urgency=low
+
+  * Merged applicable configuration changes from pulseaudio 0.9.15-1maemo25
+    and pulseaudio-nokia 0.9.15.0-37.
+  * Added fallback table for module-stream-restore.
+  * Added table for module-match.
+  * Added mixer tuning and other parameters for pulseaudio-nokia from
+    Fremantle. These need to be adjusted for Harmattan in the future.
+  * Enabled Bluetooth-related modules.
+  * Enabled module-alsa-sink-volume.
+
+ -- Maemo Multimedia <multimedia@maemo.org>  Fri, 25 Sep 2009 16:12:05 +0300
+
+pulseaudio-settings (0.9.15-9) unstable; urgency=low
+
+  * Enabled module-policy-enforcement.
+  * Added sink.headphone for DAC33.
+  * Enabled FRAME mode for McBSP3 and increased sink.hw0 fragment size
+    to 960 (5ms).
+  * Added /etc/pulse/pulseaudio_pre-start.sh to setup FRAME mode;
+    pulseaudio main package needs to support this.
+  * Adapted enable_haptics_on_piezo.sh to new mixer settings.
+
+ -- Maemo Multimedia <multimedia@maemo.org>  Tue, 23 Jun 2009 15:35:05 +0300
+
+pulseaudio-settings (0.9.15-8) unstable; urgency=low
+
+  * Disabled module-policy-enforcement to help with integration.
+  * Corrected changelog for previous version (module-alsa-sink-volume
+    is still not enabled for n950).
+
+ -- Maemo Multimedia <multimedia@maemo.org>  Fri, 12 Jun 2009 09:39:30 +0300
+
+pulseaudio-settings (0.9.15-7) unstable; urgency=low
+
+  * Included pulseaudio-nokia parameter files on n950 target. They are installed
+    with dpkg-divert as replacements for pulseaudio-nokia provided ones.
+  * For this reason, depend on pulseaudio-modules-nokia-common.
+
+ -- Maemo Multimedia <multimedia@maemo.org>  Thu, 04 Jun 2009 15:02:50 +0300
+
+pulseaudio-settings (0.9.15-6) unstable; urgency=low
+
+  * Disable module-alsa-sink-volume on n950 - can be enabled again when new
+    volume settings have a match in pulseaudio-nokia.
+
+ -- Maemo Multimedia <multimedia@maemo.org>  Fri, 29 May 2009 10:12:52 +0300
+
+pulseaudio-settings (0.9.15-5) unstable; urgency=low
+
+  * debian/control: remove Conflicts: pulseaudio (>> 0.9.15)
+
+ -- Maemo Multimedia <multimedia@maemo.org>  Thu, 28 May 2009 14:22:45 +0300
+
+pulseaudio-settings (0.9.15-4) unstable; urgency=low
+
+  * Merged applicable configuration changes from 0.9.15-1maemo8.
+  * debian/control: bumped dependencies to >= 0.9.15-1maemo8.
+
+ -- Maemo Multimedia <multimedia@maemo.org>  Thu, 28 May 2009 09:33:49 +0300
+
+pulseaudio-settings (0.9.15-3) unstable; urgency=low
+
+  * Decreased fragment size to 192 for n950 configurations to avoid
+    channel swapping bug NB#110800 in ALSA.
+  * Updated alsa-sink-volume settings.
+  * Included experimental n950-haptics settings package.
+  * Included special script to enable haptic feedback on n950 configurations.
+  * Enabled haptics script on boot for R&D images.
+
+ -- Maemo Multimedia <multimedia@maemo.org>  Fri, 24 Apr 2009 13:19:45 +0300
+
+pulseaudio-settings (0.9.15-2) unstable; urgency=low
+
+  * Changed number of fragments in primary ALSA sink to workaround
+    problems with ALSA initialization.
+  * Updated mixer configuration for n950 (still disabled).
+
+ -- Maemo Multimedia <multimedia@maemo.org>  Fri, 27 Mar 2009 13:21:06 +0200
+
+pulseaudio-settings (0.9.15-1) unstable; urgency=low
+
+  * Moved PulseAudio configuration into a this package.
+  * pulseaudio now depends on one of the settings packages created by this
+    package.
+
+ -- Maemo Multimedia <multimedia@maemo.org>  Tue, 10 Mar 2009 09:53:28 +0200

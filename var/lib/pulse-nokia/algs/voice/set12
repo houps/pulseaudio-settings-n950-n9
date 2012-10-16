@@ -1,0 +1,3 @@
+x-maemo.cmt.ul_timing_advance = "500"
+x-maemo.ear_ref_padding = "-3333"
+x-maemo.active_mic_channel = "2"

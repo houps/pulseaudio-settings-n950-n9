@@ -1,0 +1,2 @@
+x-maemo.alsa_sink.mixer_control = "HP DAC:control,Headphone:20,Earphone:off"
+x-maemo.alsa_sink.mixer_tuning = "HP DAC=1:-5850,31:-4350,63:-2750,118:0"
