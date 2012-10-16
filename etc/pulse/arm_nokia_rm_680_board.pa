@@ -1,0 +1,95 @@
+#!/usr/bin/pulseaudio -nF
+.fail
+
+### Automatically restore the volume of streams and devices
+load-module module-device-restore
+#load-module module-stream-restore
+load-module module-card-restore
+
+### Automatically load driver modules for Bluetooth hardware
+.ifexists module-bluetooth-discover.so
+load-module module-bluetooth-discover
+.endif
+
+load-module module-native-protocol-unix
+
+### Automatically suspend sinks/sources that become idle for too long
+load-module module-suspend-on-idle timeout=5
+
+### Automatically restore the default sink/source when changed by the user during runtime
+load-module module-default-device-restore
+
+### Publish connection data in the X11 root window
+.ifexists module-x11-publish.so
+.nofail
+load-module module-x11-publish
+.fail
+.endif
+
+### Make sure we always have a sink around, even if it is a null sink.
+load-module module-always-sink
+
+### Default static drivers
+
+load-module module-alsa-sink-old sink_name=sink.hw0 device=hw:0  rate=48000 fragment_size=19200 fragments=4 alt_fragment_size=1920 alt_fragments=4 paths=nokia-n950-twl4030-output-earpiece,nokia-n950-twl4030-output-earpiece-nosidetone,nokia-n950-twl4030-output-headset-call,nokia-n950-twl4030-output-headset,nokia-n950-twl4030-output-ihfandheadset,nokia-n950-twl4030-output-ihf
+load-module module-alsa-sink-old sink_name=sink.headphone device=hw:1  rate=48000 fragment_size=1920 fragments=4 alt_fragment_size=19200 alt_fragments=4 paths=nokia-n950-tlv320dac33-output-headphone-call,nokia-n950-tlv320dac33-output-headphone
+update-sink-proplist sink.hw0 module-suspend-on-idle.timeout=1
+set-sink-volume sink.hw0 0
+
+load-module module-alsa-source-old source_name=source.hw0 device=hw:0 rate=48000 fragment_size=1920 fragments=4 alt_fragment_size=960 alt_fragments=4 paths=nokia-n950-twl4030-input-headset,nokia-n950-twl4030-input-internal-microphones
+update-source-proplist source.hw0 module-suspend-on-idle.timeout=1
+
+### Nokia audio enhancements modules
+.ifexists module-meego-voice.so
+  load-module module-meego-voice master_sink=sink.hw0 master_source=source.hw0
+.endif
+
+### nokiamodem_backend
+.ifexists /dev/cmt_speech
+load-module module-meego-cmtspeech source=source.voice sink=sink.voice dbus_type="system"
+.endif
+
+.ifexists module-meego-music.so
+load-module module-meego-music sink_name=sink.music master_sink=sink.voice.raw
+.endif
+
+.ifexists module-meego-record.so
+load-module module-meego-record source_name=source.record master_source=source.voice.raw
+.endif
+
+### Bluetooth OMAP SCO over PCM
+.nofail
+
+load-module module-alsa-sink-old sink_name=sink.hw1 device=hw:2 rate=8000 channels=1 fragment_size=80 fragments=4 paths=nokia-n950-wl1273-output-bt,nokia-n950-wl1273-output-fmtx
+load-module module-alsa-source-old source_name=source.hw1 device=hw:2 rate=8000 channels=1 fragment_size=80 fragments=4 paths=nokia-n950-wl1273-input-bt,nokia-n950-wl1273-input-fmrx
+
+### Extra modules
+.ifexists /usr/lib/pulse-0.9.19/modules/module-nokia-parameters.so
+load-module module-nokia-parameters
+.endif
+.ifexists /usr/lib/pulse-0.9.19/modules/module-nokia-algorithms.so
+load-module module-nokia-algorithms
+.endif
+##.ifexists /usr/lib/pulse-0.9.19/modules/module-nokia-audiots.so
+##load-module module-nokia-audiots hw_sink_name=sink.hw0
+##.endif
+
+### policy 
+.ifexists module-policy-enforcement.so
+load-module module-policy-enforcement
+.endif
+
+### mainvolume
+.ifexists module-meego-mainvolume.so
+load-module module-meego-mainvolume
+.endif
+
+### Make some devices default
+.nofail
+set-default-sink sink.music
+set-default-source source.record
+set-sink-volume sink.voice 0x10000
+set-source-volume source.voice 0x10000
+set-sink-volume sink.hw0 0x10000
+
+
