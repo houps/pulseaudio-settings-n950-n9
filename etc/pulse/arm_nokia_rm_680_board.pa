@@ -8,11 +8,6 @@ load-module module-dbus-protocol
 ### Automatically restore the volume of streams and devices
 load-module module-stream-restore-nemo restore_device=no restore_volume=yes restore_muted=no route_table=/etc/pulse/x-maemo-route.table fallback_table=/etc/pulse/x-maemo-stream-restore.table
 
-### Automatically load driver modules for Bluetooth hardware
-.ifexists module-bluetooth-discover.so
-load-module module-bluetooth-discover
-.endif
-
 ### Automatically suspend sinks/sources that become idle for too long
 load-module module-suspend-on-idle timeout=5
 
@@ -59,7 +54,12 @@ load-module module-meego-record source_name=source.record master_source=source.v
 ### Bluetooth OMAP SCO over PCM
 .nofail
 
-load-module module-alsa-card device_id=2 rate=8000 sink_name=sink.hw1 source_name=source.hw1 profile_set=nokia-n950-wl1273.conf
+load-module module-alsa-card device_id=2 rate=8000 sink_name=sink.hw1 source_name=source.hw1 profile_set=nokia-n950-wl1273.conf tsched=0 fragment_size=80 fragments=2 format=s16le
+
+### Automatically load driver modules for Bluetooth hardware
+.ifexists module-bluetooth-discover.so
+load-module module-bluetooth-discover sco_sink=sink.hw1 sco_source=source.hw1
+.endif
 
 ### Extra modules
 .ifexists module-meego-parameters.so
