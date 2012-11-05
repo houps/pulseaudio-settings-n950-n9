@@ -19,7 +19,7 @@ load-module module-x11-publish
 .endif
 
 
-load-module module-null-sink sink_name=sink.null
+load-module module-null-sink sink_name=sink.null rate=48000
 
 ### Default static drivers
 
