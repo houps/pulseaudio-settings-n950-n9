@@ -24,12 +24,13 @@ load-module module-null-sink sink_name=sink.null rate=48000
 ### Default static drivers
 
 load-module module-alsa-card device_id=dfl61twl4030 rate=48000 card_name=twl4030 sink_name=sink.hw0 source_name=source.hw0 profile_set=nokia-n950-twl4030.conf tsched=0 fragment_size=1920
+set-sink-volume sink.hw0 0
 
 load-module module-alsa-card device_id=dfl61dac33 rate=48000 card_name=dac33 sink_name=sink.headphone profile_set=nokia-n950-tlv320dac33.conf tsched=0 fragment_size=1920
+set-sink-volume sink.headphone 0
 
 update-sink-proplist sink.hw0 module-suspend-on-idle.timeout=1
 update-source-proplist source.hw0 module-suspend-on-idle.timeout=1
-set-sink-volume sink.hw0 0
 
 
 ### Nokia audio enhancements modules
@@ -77,13 +78,12 @@ load-module module-meego-mainvolume
 .endif
 
 ### Make some devices default
-.nofail
 set-default-sink sink.music
 set-default-source source.record
 set-sink-volume sink.voice 0x10000
 set-source-volume source.voice 0x10000
 set-sink-volume sink.hw0 0x10000
-
+set-sink-volume sink.headphone 0x10000
 
 load-module module-match table=/etc/pulse/x-maemo-match.table key=application.name
 
