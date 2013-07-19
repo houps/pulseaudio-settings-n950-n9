@@ -1,0 +1,90 @@
+* Wed Jan 30 2013 Juho Hamalainen <juho.hamalainen@tieto.com> - 2.1.3
+- Fixes NEMO#620: Downmix stereo to mono for ihf playback.
+
+* Wed Jan 16 2013 Juho Hamalainen <juho.hamalainen@tieto.com> - 2.1.2
+- Update package dependencies.
+
+* Wed Jan 09 2013 Juho Hamalainen <juho.hamalainen@tieto.com> - 2.1.2
+- Update packaging, drop unneeded scripts and fix file ownership.
+
+* Fri Nov 09 2012 Juho Hamalainen <juho.hamalainen@tieto.com> - 2.1.2
+- Headphone volume control works properly.
+- Limit maximum headphone volume.
+- Raise ihf volume-limit.
+
+* Fri Nov 02 2012 Juho Hamalainen <juho.hamalainen@tieto.com> - 2.1.1
+- Add dependencies to modules used in settings.
+
+* Mon Oct 29 2012 Juho Hamalainen <juho.hamalainen@tieto.com> - 2.1.1
+- Configuration changes to enable BT audio.
+- Add "Obsoletes" for the closed Nokia packages, so that the package
+  manager won't complain when upgrading PulseAudio from 0.9.22 to 2.1.
+
+* Mon Oct 29 2012 Juho Hamalainen <juho.hamalainen@tieto.com> - 2.1.0
+- Update configuration for PulseAudio 2.1
+- Skip-probe doesn't work properly in PA 2.1, set skip to no.
+- ALSA timer based scheduling has some problems with calling/voice-module,
+  disable for now.
+- PulseAudio functionality is now at the same level as with 0.9.22
+  configuration.
+- Update versioning, MAJOR.MINOR match PulseAudio version, MICRO is
+  settings release.
+
+* Tue Oct 23 2012 Vesa-Matti Hartikainen <vesa-matti.hartikainen@jollamobile.com> - 0.9.19.11
+- Fixes NEMO#546: PulseAudio sample playback makes Applications FPS drop
+
+* Fri Jan 27 2012 Vesa-Matti Hartikainen <vesa-matti.hartikainen@nokia.com> - 0.9.19.11
+- Fixes NEMO#87: PulseAudio consumes CPU time while idle
+
+* Thu Dec 02 2011 Marko Saukko <marko.saukko@cybercom.com> - 0.9.19.11
+- Fixes NEMO#33: Added symbolic link from rm-680 to rm-696 for N9.
+
+* Thu Sep 1 2011 Sami Sirkia <sami.sirkia@cybercom.com> - 0.9.19.11
+- Swapped headset buffer sizes in arm_nokia_rm_680_board.pa
+- Fixes headset distorsion and clipping during call (BMC#22853).
+
+* Wed Aug 24 2011 Jouni Peltonen <jouni.peltonen@cybercom.com> - 0.9.19.11
+- Added microphone swap patch to change  microphones during call (BMC#22743).
+
+* Thu Jun 30 2011 Sami Sirkia <sami.sirkia@cybercom.com> - 0.9.19.11
+- Moved default.pa as /etc/pulse/arm_nokia_rm_680_board.pa
+- Added loading of sink.music, sink.record. Set them as defaults.
+- Removed unnecessary daemon.conf, system.pa, /etc/skel hack.
+
+* Thu Apr 21 2011 Jouni Peltonen <jouni.peltonen@cybercom.com> - 0.9.19.11
+- Added mainvolume loading lines to default.pa
+
+* Tue Apr 19 2011 Jouni Peltonen <jouni.peltonen@cybercom.com> - 0.9.19.11
+- Hw_volume-parameter removed from sink.hw1 loading in default.pa
+- sink.hw0 volume set to 0x10000 in default.pa
+
+* Fri Apr 08 2011 Markus Lehtonen <markus.lehtonen@nokia.com> - 0.9.19.11
+- Revert back to 0.9.19.11
+
+* Thu Apr 07 2011 Markus Lehtonen <markus.lehtonen@nokia.com> - 0.9.19.14
+- Version bumpt to 0.9.19.14
+- Enable loading cmtspeech module
+
+* Wed Jan 19 2011 Jouni Peltonen <jouni.peltonen@cybercom.com> - 0.9.19.11
+- Default.pa updated to have voice module as default sink and source.
+
+* Wed Jan 19 2011 Jouni Peltonen <jouni.peltonen@cybercom.com> - 0.9.19.11
+- Defeault.pa updated to include sinks for all the audio devices.
+
+* Tue Jan 18 2011 Jouni Peltonen <jouni.peltonen@cybercom.com> - 0.9.19.11
+- Default.pa updated to include N950 paths.
+
+* Tue Jan 11 2011 Markus Lehtonen <markus.lehtonen@nokia.com> - 0.9.19.11
+- Loading of cmt-speech plugin disabled for now (until we have oFono support)
+
+* Mon Dec 13 2010 Jouni Peltonen <jouni.peltonen@cybercom.com> - 0.9.19.11
+- Default.pa addition corrected.
+
+* Mon Dec 13 2010 Jouni Peltonen <jouni.peltonen@cybercom.com> - 0.9.19.11
+- Default.pa added to skel-directory.
+
+* Fri Nov 30 2010 Markus Lehtonen <markus.lehtonen@nokia.com> - 0.9.19.11
+- Some hacks to cope with MeeGo
+
+* Fri Nov 12 2010 Markus Lehtonen <markus.lehtonen@nokia.com> - 0.9.19.11
+- Initial RPM packaging, imported from H

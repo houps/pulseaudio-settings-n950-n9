@@ -1,0 +1,56 @@
+Name: pulseaudio-settings-n950
+Summary: PulseAudio settings for N950 and N9
+Version: 2.1.4
+Release: 1
+Group: System/Libraries
+License: GPLv2
+URL: https://github.com/nemomobile/pulseaudio-settings-n950-n9
+BuildArch: noarch
+Sources:
+    - pulseaudio-settings-n950-n9-%{version}.tar.gz
+
+Description: |
+ PulseAudio, previously known as Polypaudio, is a sound server for POSIX and WIN32 systems. It is a drop in replacement for the ESD sound server with much better latency, mixing/re-sampling quality and overall architecture. This package includes device specific settings for PulseAudio.
+
+Requires:
+    - pulseaudio >= 2.1
+    - pulseaudio-modules-nemo-voice >= 2.1.4
+    - pulseaudio-modules-nemo-music >= 2.1.4
+    - pulseaudio-modules-nemo-record >= 2.1.4
+    - pulseaudio-modules-nemo-parameters >= 2.1.4
+    - pulseaudio-modules-nemo-stream-restore >= 2.1.4
+    - pulseaudio-modules-nemo-mainvolume >= 2.1.4
+    - pulseaudio-module-cmtspeech-n9xx >= 2.1.3
+    - pulseaudio-policy-enforcement
+
+Provides:
+    - pulseaudio-settings
+
+# The closed Nokia modules are not compatible with pulseaudio 2.1. Obsoleting
+# them here in the settings package should make the upgrade from 0.9.22 to 2.1
+# go smoothly without complaints from the package manager.
+Obsoletes:
+    - pulseaudio-modules-nokia-common-bin
+    - pulseaudio-modules-nokia-algorithms-bin
+    - pulseaudio-modules-nokia-audiots-bin
+    - pulseaudio-modules-nokia-parameters-bin
+
+Configure: none
+Builder: none
+
+Files:
+    - "%config %{_sysconfdir}/pulse/arm_nokia_rm_680_board.pa"
+    - "%config %{_sysconfdir}/pulse/arm_nokia_rm_696_board.pa"
+    - "%config %{_sysconfdir}/pulse/*.table"
+    - "%{_datadir}/pulseaudio/alsa-mixer/profile-sets/*.conf"
+    - "%{_datadir}/pulseaudio/alsa-mixer/paths/*.conf"
+    - "%{_localstatedir}/lib/*"
+
+SubPackages:
+    - Name: debug
+      Summary: PulseAudio debugging support
+      Group: Development/Libraries
+      Description: |
+          This package enables logging in PulseAudio and Policy components (stored in /var/log) and has dependencies to all relevant -dbg packages.
+      Files:
+          - "%config %{_sysconfdir}/debug.d/*"
