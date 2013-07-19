@@ -6,7 +6,7 @@ load-module module-simple-protocol-unix
 load-module module-dbus-protocol
 
 ### Automatically restore the volume of streams and devices
-load-module module-stream-restore-nemo restore_device=no restore_volume=yes restore_muted=no route_table=/etc/pulse/x-maemo-route.table fallback_table=/etc/pulse/x-maemo-stream-restore.table
+load-module module-stream-restore-nemo restore_device=no restore_volume=yes restore_muted=no route_table=/etc/pulse/x-maemo-route.table fallback_table=/etc/pulse/x-maemo-stream-restore.table use_voice=yes
 
 ### Automatically suspend sinks/sources that become idle for too long
 load-module module-suspend-on-idle timeout=5
