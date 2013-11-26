@@ -5,8 +5,15 @@ load-module module-native-protocol-unix
 load-module module-simple-protocol-unix
 load-module module-dbus-protocol
 
+### Nemo parameters module.
+### This needs to be loaded before stream-restore-nemo, since stream-restore uses parameters module
+### for mode change tracking.
+.ifexists module-meego-parameters.so
+load-module module-meego-parameters cache=1 use_voice=no
+.endif
+
 ### Automatically restore the volume of streams and devices
-load-module module-stream-restore-nemo restore_device=no restore_volume=yes restore_muted=no route_table=/etc/pulse/x-maemo-route.table fallback_table=/etc/pulse/x-maemo-stream-restore.table use_voice=yes
+load-module module-stream-restore-nemo restore_device=no restore_volume=yes restore_muted=no route_table=/etc/pulse/x-maemo-route.table fallback_table=/etc/pulse/x-maemo-stream-restore.table use_voice=no
 
 ### Automatically suspend sinks/sources that become idle for too long
 load-module module-suspend-on-idle timeout=5
@@ -62,10 +69,6 @@ load-module module-alsa-card device_id=2 rate=8000 sink_name=sink.hw1 source_nam
 load-module module-bluetooth-discover sco_sink=sink.hw1 sco_source=source.hw1
 .endif
 
-### Extra modules
-.ifexists module-meego-parameters.so
-load-module module-meego-parameters cache=1
-.endif
 
 ### policy 
 .ifexists module-policy-enforcement.so
