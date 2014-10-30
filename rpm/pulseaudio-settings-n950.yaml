@@ -42,6 +42,7 @@ Files:
     - "%config %{_sysconfdir}/pulse/arm_nokia_rm_680_board.pa"
     - "%config %{_sysconfdir}/pulse/arm_nokia_rm_696_board.pa"
     - "%config %{_sysconfdir}/pulse/*.table"
+    - "%config %{_sysconfdir}/sysconfig/pulseaudio"
     - "%{_datadir}/pulseaudio/alsa-mixer/profile-sets/*.conf"
     - "%{_datadir}/pulseaudio/alsa-mixer/paths/*.conf"
     - "%{_localstatedir}/lib/*"
