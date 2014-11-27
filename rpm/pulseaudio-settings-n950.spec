@@ -67,11 +67,13 @@ rm -rf %{buildroot}
 
 # >> install post
 install -d %{buildroot}/%{_sysconfdir}/pulse
+install -d %{buildroot}/%{_sysconfdir}/sysconfig
 install -d %{buildroot}/%{_sysconfdir}/debug.d
 install -d %{buildroot}/%{_sbindir}
 install -d %{buildroot}/%{_datadir}
 install -d %{buildroot}/%{_localstatedir}
 install -m 644 etc/pulse/*.{pa,table} %{buildroot}/%{_sysconfdir}/pulse/
+install -m 644 etc/sysconfig/pulseaudio %{buildroot}/%{_sysconfdir}/sysconfig/
 ln -s %{_sysconfdir}/pulse/arm_nokia_rm_680_board.pa %{buildroot}/%{_sysconfdir}/pulse/arm_nokia_rm_696_board.pa
 install -m 644 etc/debug.d/* %{buildroot}/%{_sysconfdir}/debug.d/
 cp -a usr/share/* %{buildroot}/%{_datadir}/
