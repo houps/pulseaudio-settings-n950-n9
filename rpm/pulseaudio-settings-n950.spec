@@ -15,7 +15,7 @@ Group:      System/Libraries
 License:    GPLv2
 BuildArch:  noarch
 URL:        https://github.com/nemomobile/pulseaudio-settings-n950-n9
-Source0:    pulseaudio-settings-n950-n9-%{version}.tar.gz
+Source0:    pulseaudio-settings-n950-%{version}.tar.gz
 Source100:  pulseaudio-settings-n950.yaml
 Requires:   pulseaudio >= 4.0
 Requires:   pulseaudio-modules-nemo-voice >= 4.0.4
