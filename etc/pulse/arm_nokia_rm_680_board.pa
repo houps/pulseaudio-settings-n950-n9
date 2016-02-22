@@ -65,8 +65,8 @@ load-module module-meego-record source_name=source.record master_source=source.v
 load-module module-alsa-card device_id=2 rate=8000 sink_name=sink.hw1 source_name=source.hw1 profile_set=nokia-n950-wl1273.conf tsched=0 fragment_size=80 fragments=2 format=s16le
 
 ### Automatically load driver modules for Bluetooth hardware
-.ifexists module-bluetooth-discover.so
-load-module module-bluetooth-discover sco_sink=sink.hw1 sco_source=source.hw1
+.ifexists module-bluez4-discover.so
+load-module module-bluez4-discover sco_sink=sink.hw1 sco_source=source.hw1
 .endif
 
 
